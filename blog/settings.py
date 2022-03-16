@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-b!+%^)oxm078y_2&=35!33))%oh+m4vye!d55%c28on1e+@-&%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blog_django',
+        'NAME': 'blogjango',
         'HOST': '127.0.0.1',
-        'USER': 'root',
-        'PASSWORD': '',
+        'USER': 'cursopython',
+        'PASSWORD': 'curs0Pyth0n@169',
         'PORT': '3306'
     }
 }
