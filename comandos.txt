@@ -17,3 +17,11 @@ python manage.py runserver
 https://github.com/summernote/django-summernote
 
 python manage.py collectstatic
+
+# https://django-axes.readthedocs.io/en/latest/2_installation.html
+pip install django-axes
+
+# https://django-crispy-forms.readthedocs.io/en/latest/install.html
+pip install django-crispy-forms
+
+pip install requests

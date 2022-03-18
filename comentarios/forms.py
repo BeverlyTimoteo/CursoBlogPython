@@ -1,14 +1,35 @@
 from django.forms import ModelForm
 from .models import Comentario
+import requests
 
 
 class FormComentario(ModelForm):
     def clean(self):
-        data = self.cleaned_data
+        raw_data = self.data
 
-        nome = data.get('nome_comentario')
-        email = data.get('email_comentario')
-        comentario = data.get('comentario')
+        recaptcha_response = raw_data.get('g-recaptcha-response')
+
+        req = requests.post(
+            'https://www.google.com/recaptcha/api/siteverify',
+            data={
+                'secret': '',
+                'response': recaptcha_response,
+            }
+        )
+
+        recaptcha_result = req.json()
+
+        if not recaptcha_result.get('success'):
+            self.add_error(
+                'comentario',
+                'Desculpe Mr. Robot, não passou!'
+            )
+
+        cleaned_data = self.cleaned_data
+
+        nome = cleaned_data.get('nome_comentario')
+        email = cleaned_data.get('email_comentario')
+        comentario = cleaned_data.get('comentario')
 
         if len(nome) < 5:
             self.add_error(
